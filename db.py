@@ -41,7 +41,8 @@ class DataBase(Book, Client):
             self.cursor.execute(f'''
                 SELECT {self.TABLE_NAME_2}.client, {self.TABLE_NAME_1}.book
                 FROM {self.TABLE_NAME_2}
-                JOIN {self.TABLE_NAME_1} ON {self.TABLE_NAME_2}.book_id = {self.TABLE_NAME_1}.id''')
+                JOIN {self.TABLE_NAME_1}
+                ON {self.TABLE_NAME_2}.book_id = {self.TABLE_NAME_1}.id''')
             
             self.connection.commit()
 
@@ -141,7 +142,7 @@ class DataBase(Book, Client):
 
                 for i, row in enumerate(books, start=1):
                     id_, book, price = row
-                    print(f'{i} - {id_} {book} | {price}')
+                    print(f'{i} - {id_} | {book} | {price}')
                 print()
 
                 delete_input = int(input('Type the id of the Book wished to delete: '))
